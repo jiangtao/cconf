@@ -1,6 +1,8 @@
 import type { Metadata } from "next"
 import { Inter } from "next/font/google"
 import "./globals.css"
+import { LanguageProvider } from "@/contexts/language-context"
+import { LanguageToggle } from "@/components/language-toggle"
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -17,7 +19,14 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <LanguageProvider>
+          <div className="fixed top-4 right-4 z-50">
+            <LanguageToggle />
+          </div>
+          {children}
+        </LanguageProvider>
+      </body>
     </html>
   )
 }
