@@ -7,13 +7,16 @@ run:
 linters:
   disable-all: true
   enable:
-    - gofmt
     - govet
     - errcheck
     - staticcheck
     - unused
     - gosimple
     - ineffassign
+
+formatters:
+  enable:
+    - gofmt
 
 linters-settings:
   govet:
