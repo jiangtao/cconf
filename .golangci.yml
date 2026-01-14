@@ -1,6 +1,8 @@
+version: 2
+
 run:
   timeout: 5m
-  go: "1.21"
+  go: "1.24"
 
 linters:
   disable-all: true
@@ -19,6 +21,5 @@ linters-settings:
       - printf
 
 issues:
-  exclude-use-default: false
   max-issues-per-linter: 0
   max-same-issues: 0
