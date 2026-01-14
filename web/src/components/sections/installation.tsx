@@ -1,6 +1,6 @@
 'use client'
 
-import { Check } from "lucide-react"
+import { useState } from "react"
 
 const installSteps = [
   {
@@ -18,6 +18,14 @@ const installSteps = [
 ]
 
 export function Installation() {
+  const [copiedPlatform, setCopiedPlatform] = useState<string | null>(null)
+
+  const handleCopy = async (command: string, platform: string) => {
+    await navigator.clipboard.writeText(command)
+    setCopiedPlatform(platform)
+    setTimeout(() => setCopiedPlatform(null), 2000)
+  }
+
   return (
     <section id="installation" className="py-24">
       <div className="container mx-auto px-4">
@@ -38,10 +46,12 @@ export function Installation() {
               <div className="mb-3 flex items-center justify-between">
                 <h3 className="font-semibold text-slate-900">{step.platform}</h3>
                 <button
-                  onClick={() => navigator.clipboard.writeText(step.command)}
+                  type="button"
+                  onClick={() => handleCopy(step.command, step.platform)}
+                  aria-label={`Copy installation command for ${step.platform}`}
                   className="rounded px-3 py-1 text-sm text-slate-600 hover:bg-slate-200"
                 >
-                  Copy
+                  {copiedPlatform === step.platform ? "Copied!" : "Copy"}
                 </button>
               </div>
               <code className="block break-all rounded bg-slate-900 p-4 text-sm text-green-400">
