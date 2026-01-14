@@ -21,6 +21,8 @@ Thumbs.db
 docs/plans
 # 构建产物
 build/
+ccconfig
+ccconfig-*
 
 # Web landing page
 web/node_modules/
