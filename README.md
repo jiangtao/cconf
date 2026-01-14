@@ -4,6 +4,7 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Go Report Card](https://goreportcard.com/badge/github.com/jiangtao/ccconfig)](https://goreportcard.com/report/github.com/jiangtao/ccconfig)
+<!-- [![Live Site](https://img.shields.io/badge/🔗-Live_Site-blue)](https://ccconfig.vercel.app) -->
 
 ## Why ccconfig?
 
@@ -242,6 +243,43 @@ jobs:
 ## Contributing
 
 Contributions welcome! Please see [DEVELOPMENT.md](docs/DEVELOPMENT.md) for details.
+
+## Landing Page Deployment
+
+The project includes a Next.js landing page in the `web/` directory. To deploy to Vercel:
+
+**Quick Start:**
+```bash
+cd web
+./deploy.sh
+```
+
+**Manual Deployment:**
+```bash
+# Install Vercel CLI
+npm install -g vercel
+
+# Login to Vercel
+vercel login
+
+# Deploy from web directory
+cd web
+vercel --prod
+```
+
+**Web Dashboard Deployment:**
+1. Go to https://vercel.com/new
+2. Import `jiangtao/cc-config` repository
+3. Set root directory to `web`
+4. Click "Deploy"
+
+For detailed deployment instructions, see [web/DEPLOYMENT.md](web/DEPLOYMENT.md) or [web/DEPLOYMENT_README.md](web/DEPLOYMENT_README.md).
+
+**Current Deployment Status:**
+- Landing page built and tested locally
+- Code pushed to GitHub
+- Ready for Vercel deployment
+- See [DEPLOYMENT_STATUS.md](DEPLOYMENT_STATUS.md) for complete status
 
 ## License
 
