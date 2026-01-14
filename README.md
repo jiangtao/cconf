@@ -10,6 +10,152 @@
 - ✅ 手动管理插件缓存（大文件）
 - ✅ Git 版本控制，安全可靠
 - ✅ 敏感信息（API Token）自动排除
+- ✅ Go CLI 工具，跨平台单一二进制
+- ✅ 国际化支持（中文/英文）
+- ✅ GitHub Actions 自动恢复
+
+## 方案选择
+
+本项目提供两套实现：
+
+### 1. Bash 脚本（原始方案）
+
+适合熟悉 Shell 脚本的用户，无需编译。
+
+### 2. Go CLI（推荐）
+
+- 单一二进制文件，无需依赖
+- 跨平台支持（macOS/Linux/Windows）
+- 更好的错误处理
+- 国际化支持
+
+---
+
+## Go CLI 快速开始
+
+### 安装
+
+**从 Release 下载：**
+```bash
+# macOS (Apple Silicon)
+curl -L https://github.com/jiangtao/ccconfig/releases/latest/download/ccconfig-darwin-arm64 -o ccconfig
+chmod +x ccconfig
+mv ccconfig /usr/local/bin/
+
+# macOS (Intel)
+curl -L https://github.com/jiangtao/ccconfig/releases/latest/download/ccconfig-darwin-amd64 -o ccconfig
+chmod +x ccconfig
+mv ccconfig /usr/local/bin/
+
+# Linux
+curl -L https://github.com/jiangtao/ccconfig/releases/latest/download/ccconfig-linux-amd64 -o ccconfig
+chmod +x ccconfig
+mv ccconfig /usr/local/bin/
+```
+
+**从源码编译：**
+```bash
+git clone https://github.com/jiangtao/ccconfig.git
+cd ccconfig
+make build
+sudo make install
+```
+
+### 基础使用
+
+```bash
+# 查看帮助
+ccconfig --help
+
+# 初始化配置仓库
+ccconfig init --git-url git@github.com:user/ccconfig.git
+
+# 备份配置
+ccconfig backup
+
+# 恢复配置
+ccconfig restore
+
+# 使用中文界面
+ccconfig backup --lang zh
+```
+
+### 命令说明
+
+#### backup - 备份配置
+
+```bash
+# 基础备份
+ccconfig backup
+
+# 指定项目目录
+ccconfig backup --projects ~/work --projects ~/projects
+
+# 自动扫描所有项目
+ccconfig backup --all-projects
+
+# 只备份项目配置
+ccconfig backup --no-settings --no-commands --no-skills --all-projects
+```
+
+#### restore - 恢复配置
+
+```bash
+# 基础恢复
+ccconfig restore
+
+# 预览模式（不实际写入）
+ccconfig restore --dry-run
+
+# 跳过 git pull
+ccconfig restore --pull=false
+```
+
+#### cache - 插件缓存管理
+
+```bash
+# 备份插件缓存
+ccconfig cache backup
+
+# 恢复插件缓存
+ccconfig cache restore
+
+# 清理缓存
+ccconfig cache clean
+```
+
+### 配置文件
+
+创建 `~/.ccconfig.yaml` 持久化配置：
+
+```yaml
+# 配置仓库路径
+repo: ~/cc-config
+
+# 项目路径列表
+projects:
+  - ~/work
+  - ~/projects
+  - ~/dev
+
+# 默认语言 (en/zh)
+lang: en
+
+# Git 设置
+git:
+  autoCommit: false
+  autoPull: false
+
+# 备份设置
+backup:
+  includeSettings: true
+  includeCommands: true
+  includeSkills: true
+```
+
+---
+
+## Bash 脚本（原始方案）
 
 ## 目录结构
 

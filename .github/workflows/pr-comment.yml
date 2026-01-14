@@ -1,0 +1,52 @@
+name: PR Config Check
+
+on:
+  pull_request:
+    types: [opened, synchronize]
+  workflow_dispatch:
+
+jobs:
+  config-check:
+    name: Check Claude Config Status
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+    steps:
+      - name: Checkout ccconfig
+        uses: actions/checkout@v4
+        with:
+          repository: jiangtao/cc-config
+          path: ccconfig
+
+      - name: Set up Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: '1.21'
+
+      - name: Build ccconfig
+        run: |
+          cd ccconfig
+          go build -o ccconfig .
+
+      - name: Check if config repo exists
+        id: check
+        run: |
+          REPO_URL="${{ secrets.CCCONFIG_REPO_URL }}"
+          if [ -z "$REPO_URL" ]; then
+            echo "exists=false" >> $GITHUB_OUTPUT
+            echo "message=## 📋 Claude Code Configuration\n\nℹ️ No configuration repository configured. Set `CCCONFIG_REPO_URL` secret to enable auto-restore." >> $GITHUB_OUTPUT
+          else
+            echo "exists=true" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Comment on PR
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const message = '${{ steps.check.outputs.message }}';
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: message
+            })
