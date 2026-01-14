@@ -41,11 +41,22 @@ jobs:
         with:
           go-version: ${{ env.GO_VERSION }}
 
+      - name: Debug info
+        run: |
+          echo "Go version:"
+          go version
+          echo "Working directory:"
+          pwd
+          echo "Go files:"
+          find . -name "*.go" -type f | head -20
+          echo "Go mod:"
+          cat go.mod
+
       - name: Run golangci-lint
         uses: golangci/golangci-lint-action@v6
         with:
           version: v1.62.0
-          args: --config .golangci.yml
+          args: --config .golangci.yml --verbose
 
   build:
     name: Build
