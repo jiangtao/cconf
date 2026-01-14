@@ -48,29 +48,29 @@ ccconfig restore --repo ~/cc-config`,
   ]
 
   return (
-    <section className="border-t bg-slate-50 py-24">
+    <section className="border-t bg-slate-50 py-16 sm:py-24">
       <div className="container mx-auto px-4">
-        <div className="mb-12 text-center">
-          <h2 className="mb-4 text-3xl font-bold text-slate-900">Usage</h2>
-          <p className="text-lg text-slate-600">
+        <div className="mb-8 text-center sm:mb-12">
+          <h2 className="mb-4 text-2xl font-bold text-slate-900 sm:text-3xl">Usage</h2>
+          <p className="text-base text-slate-600 sm:text-lg">
             Get started in under 5 minutes
           </p>
         </div>
 
-        <div className="mb-16">
-          <h3 className="mb-8 text-center text-2xl font-semibold text-slate-900">
+        <div className="mb-12 sm:mb-16">
+          <h3 className="mb-6 text-center text-xl font-semibold text-slate-900 sm:mb-8 sm:text-2xl">
             Quick Start
           </h3>
-          <div className="mx-auto grid max-w-4xl gap-6 md:grid-cols-2">
+          <div className="mx-auto grid max-w-4xl gap-4 md:grid-cols-2 sm:gap-6">
             {quickStart.map((step) => (
               <div
                 key={step.title}
-                className="rounded-lg border bg-white p-6 shadow-sm"
+                className="rounded-lg border bg-white p-4 shadow-sm sm:p-6"
               >
-                <h4 className="mb-3 font-semibold text-slate-900">
+                <h4 className="mb-3 font-semibold text-slate-900 text-sm sm:text-base">
                   {step.title}
                 </h4>
-                <pre className="overflow-x-auto rounded bg-slate-900 p-4 text-sm text-green-400">
+                <pre className="overflow-x-auto rounded bg-slate-900 p-3 text-xs text-green-400 sm:p-4 sm:text-sm">
                   <code>{step.code}</code>
                 </pre>
               </div>
@@ -79,19 +79,19 @@ ccconfig restore --repo ~/cc-config`,
         </div>
 
         <div>
-          <h3 className="mb-8 text-center text-2xl font-semibold text-slate-900">
+          <h3 className="mb-6 text-center text-xl font-semibold text-slate-900 sm:mb-8 sm:text-2xl">
             Common Commands
           </h3>
           <div className="mx-auto max-w-2xl space-y-3">
             {commonCommands.map((item) => (
               <div
                 key={item.command}
-                className="flex items-center justify-between rounded-lg border bg-white p-4"
+                className="flex flex-col gap-1 rounded-lg border bg-white p-3 sm:flex-row sm:items-center sm:justify-between sm:p-4"
               >
-                <code className="text-sm font-mono text-slate-900">
+                <code className="text-xs font-mono text-slate-900 sm:text-sm">
                   {item.command}
                 </code>
-                <span className="text-sm text-slate-600">
+                <span className="text-xs text-slate-600 sm:text-sm">
                   {item.description}
                 </span>
               </div>

@@ -47,27 +47,27 @@ const features = [
 
 export function Features() {
   return (
-    <section className="border-t bg-slate-50 py-24">
+    <section className="border-t bg-slate-50 py-16 sm:py-24">
       <div className="container mx-auto px-4">
-        <div className="mb-12 text-center">
-          <h2 className="mb-4 text-3xl font-bold text-slate-900">
+        <div className="mb-8 text-center sm:mb-12">
+          <h2 className="mb-4 text-2xl font-bold text-slate-900 sm:text-3xl">
             Everything you need
           </h2>
-          <p className="text-lg text-slate-600">
+          <p className="text-base text-slate-600 sm:text-lg">
             Built specifically for Claude Code power users
           </p>
         </div>
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-4 sm:gap-6 md:grid-cols-2 lg:grid-cols-3">
           {features.map((feature) => (
             <div
               key={feature.title}
-              className="rounded-lg border bg-white p-6 shadow-sm"
+              className="rounded-lg border bg-white p-4 shadow-sm sm:p-6"
             >
-              <feature.icon className="mb-4 h-8 w-8 text-blue-600" />
-              <h3 className="mb-2 text-lg font-semibold text-slate-900">
+              <feature.icon className="mb-3 h-6 w-6 text-blue-600 sm:mb-4 sm:h-8 sm:w-8" />
+              <h3 className="mb-2 text-base font-semibold text-slate-900 sm:text-lg">
                 {feature.title}
               </h3>
-              <p className="text-slate-600">{feature.description}</p>
+              <p className="text-sm text-slate-600 sm:text-base">{feature.description}</p>
             </div>
           ))}
         </div>
