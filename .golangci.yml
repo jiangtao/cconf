@@ -2,7 +2,6 @@ version: 2
 
 run:
   timeout: 5m
-  go: "1.24"
 
 linters:
   disable-all: true
@@ -11,12 +10,12 @@ linters:
     - errcheck
     - staticcheck
     - unused
-    - gosimple
     - ineffassign
 
 formatters:
   enable:
     - gofmt
+    - goimports
 
 linters-settings:
   govet:
