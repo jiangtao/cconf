@@ -72,9 +72,6 @@ export function Installation() {
 
         {/* Manual Install Options */}
         <div className="mx-auto max-w-3xl">
-          <p className="mb-4 text-center text-xs text-slate-500 uppercase tracking-wide sm:mb-6 sm:text-sm">
-            Or manually download for your platform:
-          </p>
           <div className="space-y-3 sm:space-y-4">
             {installSteps.map((step) => (
               <div
