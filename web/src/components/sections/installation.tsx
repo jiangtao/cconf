@@ -26,25 +26,6 @@ const installMethods = [
     description: "Run without installing (always uses latest version)",
     highlight: false,
   },
-  {
-    name: "Download Binary",
-    badge: "",
-    platforms: [
-      {
-        name: "macOS (Apple Silicon)",
-        command: "curl -L https://github.com/jiangtao/cc-conf/releases/latest/download/cc-conf-darwin-arm64 -o cc-conf && chmod +x cc-conf && sudo mv cc-conf /usr/local/bin/",
-      },
-      {
-        name: "macOS (Intel)",
-        command: "curl -L https://github.com/jiangtao/cc-conf/releases/latest/download/cc-conf-darwin-amd64 -o cc-conf && chmod +x cc-conf && sudo mv cc-conf /usr/local/bin/",
-      },
-      {
-        name: "Linux",
-        command: "curl -L https://github.com/jiangtao/cc-conf/releases/latest/download/cc-conf-linux-amd64 -o cc-conf && chmod +x cc-conf && sudo mv cc-conf /usr/local/bin/",
-      },
-    ],
-    highlight: false,
-  },
 ]
 
 export function Installation() {
@@ -94,20 +75,18 @@ export function Installation() {
                       {method.name}
                     </h3>
                   </div>
-                  {method.command && !method.platforms && (
-                    <button
-                      type="button"
-                      onClick={() => handleCopy(method.command, method.name)}
-                      aria-label={`Copy ${method.name} command`}
-                      className={`w-full rounded px-3 py-1.5 text-xs font-medium transition-colors sm:w-auto ${
-                        method.highlight
-                          ? "bg-blue-500 text-white hover:bg-blue-600"
-                          : "bg-slate-200 text-slate-700 hover:bg-slate-300"
-                      }`}
-                    >
-                      {copiedId === method.name ? "✓ Copied!" : "Copy"}
-                    </button>
-                  )}
+                  <button
+                    type="button"
+                    onClick={() => handleCopy(method.command, method.name)}
+                    aria-label={`Copy ${method.name} command`}
+                    className={`w-full rounded px-3 py-1.5 text-xs font-medium transition-colors sm:w-auto ${
+                      method.highlight
+                        ? "bg-blue-500 text-white hover:bg-blue-600"
+                        : "bg-slate-200 text-slate-700 hover:bg-slate-300"
+                    }`}
+                  >
+                    {copiedId === method.name ? "✓ Copied!" : "Copy"}
+                  </button>
                 </div>
 
                 {method.description && (
@@ -117,39 +96,13 @@ export function Installation() {
                 )}
               </div>
 
-              {method.platforms ? (
-                <div className="space-y-3">
-                  {method.platforms.map((platform) => (
-                    <div
-                      key={platform.name}
-                      className="rounded border border-slate-200 bg-slate-50 p-3"
-                    >
-                      <div className="mb-2 flex items-center justify-between gap-2">
-                        <span className="text-sm font-medium text-slate-900">{platform.name}</span>
-                        <button
-                          type="button"
-                          onClick={() => handleCopy(platform.command, platform.name)}
-                          aria-label={`Copy ${platform.name} command`}
-                          className="rounded px-2 py-1 text-xs text-slate-600 hover:bg-slate-200"
-                        >
-                          {copiedId === platform.name ? "Copied!" : "Copy"}
-                        </button>
-                      </div>
-                      <code className="block break-all rounded bg-slate-800 p-2 text-xs text-green-400">
-                        {platform.command}
-                      </code>
-                    </div>
-                  ))}
-                </div>
-              ) : method.command ? (
-                <code className={`block break-all rounded p-3 text-xs font-medium ${
-                  method.highlight
-                    ? "bg-slate-900 text-green-400"
-                    : "bg-slate-800 text-green-400"
-                } sm:text-sm`}>
-                  {method.command}
-                </code>
-              ) : null}
+              <code className={`block break-all rounded p-3 text-xs font-medium ${
+                method.highlight
+                  ? "bg-slate-900 text-green-400"
+                  : "bg-slate-800 text-green-400"
+              } sm:text-sm`}>
+                {method.command}
+              </code>
             </div>
           ))}
         </div>
