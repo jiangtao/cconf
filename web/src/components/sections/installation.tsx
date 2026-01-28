@@ -7,15 +7,15 @@ const oneClickInstall = "curl -fsSL https://jiangtao.vercel.app/install.sh | bas
 const installSteps = [
   {
     platform: "macOS (Apple Silicon)",
-    command: "curl -L https://github.com/jiangtao/cc-config/releases/latest/download/ccconfig-darwin-arm64 -o ccconfig && chmod +x ccconfig && sudo mv ccconfig /usr/local/bin/",
+    command: "curl -L https://github.com/jiangtao/cc-config/releases/latest/download/cconf-darwin-arm64 -o cconf && chmod +x cconf && sudo mv cconf /usr/local/bin/",
   },
   {
     platform: "macOS (Intel)",
-    command: "curl -L https://github.com/jiangtao/cc-config/releases/latest/download/ccconfig-darwin-amd64 -o ccconfig && chmod +x ccconfig && sudo mv ccconfig /usr/local/bin/",
+    command: "curl -L https://github.com/jiangtao/cc-config/releases/latest/download/cconf-darwin-amd64 -o cconf && chmod +x cconf && sudo mv cconf /usr/local/bin/",
   },
   {
     platform: "Linux",
-    command: "curl -L https://github.com/jiangtao/cc-config/releases/latest/download/ccconfig-linux-amd64 -o ccconfig && chmod +x ccconfig && sudo mv ccconfig /usr/local/bin/",
+    command: "curl -L https://github.com/jiangtao/cc-config/releases/latest/download/cconf-linux-amd64 -o cconf && chmod +x cconf && sudo mv cconf /usr/local/bin/",
   },
 ]
 
@@ -103,7 +103,7 @@ export function Installation() {
             <p className="text-xs text-slate-600 sm:text-sm">
               Or build from source:{" "}
               <code className="rounded bg-slate-100 px-2 py-1 text-xs break-all sm:text-sm">
-                git clone https://github.com/jiangtao/cc-config.git && cd ccconfig && make build && sudo make install
+                git clone https://github.com/jiangtao/cc-config.git && cd cconf && make build && sudo make install
               </code>
             </p>
           </div>

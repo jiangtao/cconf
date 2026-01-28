@@ -9,7 +9,7 @@ git remote add origin git@github.com:YOURUSERNAME/cc-config.git`,
     },
     {
       title: "2. Backup your configurations",
-      code: `ccconfig backup --repo ~/cc-config`,
+      code: `cconf backup --repo ~/cc-config`,
     },
     {
       title: "3. Push to GitHub",
@@ -20,29 +20,29 @@ git push -u origin main`,
     {
       title: "4. On new computer, restore",
       code: `git clone git@github.com:YOURUSERNAME/cc-config.git ~/cc-config
-ccconfig restore --repo ~/cc-config`,
+cconf restore --repo ~/cc-config`,
     },
   ]
 
   const commonCommands = [
     {
-      command: "ccconfig backup",
+      command: "cconf backup",
       description: "Backup all configurations",
     },
     {
-      command: "ccconfig backup --all-projects",
+      command: "cconf backup --all-projects",
       description: "Backup with auto-discovery of all projects",
     },
     {
-      command: "ccconfig restore",
+      command: "cconf restore",
       description: "Restore configurations from repo",
     },
     {
-      command: "ccconfig restore --dry-run",
+      command: "cconf restore --dry-run",
       description: "Preview changes without applying",
     },
     {
-      command: "ccconfig cache backup",
+      command: "cconf cache backup",
       description: "Backup plugin caches (large files)",
     },
   ]
