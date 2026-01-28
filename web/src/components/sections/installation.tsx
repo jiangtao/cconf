@@ -2,20 +2,20 @@
 
 import { useState } from "react"
 
-const oneClickInstall = "curl -fsSL https://cconf.vercel.app/install.sh | bash"
+const oneClickInstall = "curl -fsSL https://cc-conf.vercel.app/install.sh | bash"
 
 const installSteps = [
   {
     platform: "macOS (Apple Silicon)",
-    command: "curl -L https://github.com/jiangtao/cconf/releases/latest/download/cconf-darwin-arm64 -o cconf && chmod +x cconf && sudo mv cconf /usr/local/bin/",
+    command: "curl -L https://github.com/jiangtao/cc-conf/releases/latest/download/cc-conf-darwin-arm64 -o cc-conf && chmod +x cc-conf && sudo mv cc-conf /usr/local/bin/",
   },
   {
     platform: "macOS (Intel)",
-    command: "curl -L https://github.com/jiangtao/cconf/releases/latest/download/cconf-darwin-amd64 -o cconf && chmod +x cconf && sudo mv cconf /usr/local/bin/",
+    command: "curl -L https://github.com/jiangtao/cc-conf/releases/latest/download/cc-conf-darwin-amd64 -o cc-conf && chmod +x cc-conf && sudo mv cc-conf /usr/local/bin/",
   },
   {
     platform: "Linux",
-    command: "curl -L https://github.com/jiangtao/cconf/releases/latest/download/cconf-linux-amd64 -o cconf && chmod +x cconf && sudo mv cconf /usr/local/bin/",
+    command: "curl -L https://github.com/jiangtao/cc-conf/releases/latest/download/cc-conf-linux-amd64 -o cc-conf && chmod +x cc-conf && sudo mv cc-conf /usr/local/bin/",
   },
 ]
 
@@ -49,7 +49,7 @@ export function Installation() {
                   One-Click Install
                 </span>
                 <h3 className="text-base font-bold text-slate-900 sm:text-lg">
-                  Install cconf
+                  Install cc-conf
                 </h3>
               </div>
               <button
